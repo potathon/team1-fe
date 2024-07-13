@@ -39,19 +39,22 @@ export default function Answer() {
 
         <div className={styles.container}>
           <MyAnswer
-            key={data?.questions[0]?.question}
+            key={1}
+            num={1}
             question={data?.questions[0]?.question}
             answer={data?.questions[0]?.answer}
             recodeUrl={data?.questions[0]?.recodeUrl}
           />
           <MyAnswer
-            key={data?.questions[1]?.question}
+            key={2}
+            num={2}
             question={data?.questions[1]?.question}
             answer={data?.questions[1]?.answer}
             recodeUrl={data?.questions[1]?.recodeUrl}
           />
           <MyAnswer
-            key={data?.questions[2]?.question}
+            key={3}
+            num={3}
             question={data?.questions[2]?.question}
             answer={data?.questions[2]?.answer}
             recodeUrl={data?.questions[2]?.recodeUrl}

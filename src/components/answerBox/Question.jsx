@@ -1,6 +1,7 @@
 import styles from '../../styles/AnswerBox.module.css'
 import volumeImg from '../../assets/images/Volume up.png'
-import testAudio from '../../assets/sound/ta-da_yrvBrlS.mp3'
+
+// import testAudio from '../../assets/sound/ta-da_yrvBrlS.mp3'
 
 export default function Question({ question, recodeUrl }) {
   const audioPlayer = document.querySelector('#audio')
@@ -13,7 +14,7 @@ export default function Question({ question, recodeUrl }) {
   return (
     <div className={styles.questionContainer}>
       <div className={styles.question}>{question}</div>
-      <audio id='audio' src={testAudio} type='audio/mpeg'></audio>
+      <audio id='audio' src={recodeUrl} type='audio/mpeg'></audio>
       <button className={styles.listenBnt} onClick={handleButtonClick}>
         <img className={styles.volumeImg} src={volumeImg} alt='volumeImg' />
         <p className={styles.bntText}>듣기</p>
