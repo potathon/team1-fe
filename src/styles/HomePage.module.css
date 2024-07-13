@@ -32,11 +32,38 @@
 }
 
 .startBnt {
+  cursor: pointer;
   width: 268px;
-  height: 45px;
-  border-radius: 10px;
+  height: 60px;
+  font-weight: 800;
+  font-size: 17px;
+  border-radius: 20px;
   border: solid #f5e3b3;
   background: #f5e3b3;
-  color: #ffffff;
+  color: #9a7411;
   box-shadow: 5px 5px 5px rgb(211, 211, 211);
+  transition: transform 0.2s; /* Smooth transition for transform property */
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.startBnt:hover {
+  animation: shake 0.5s; /* Apply the shake animation */
+  animation-iteration-count: infinite; /* Repeat the animation infinitely */
 }

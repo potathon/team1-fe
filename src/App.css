@@ -14,6 +14,17 @@
   }
 }
 
+/* Chrome, Safari 및 Webkit 기반 브라우저 */
+::-webkit-scrollbar {
+  display: none; /* 스크롤바 숨기기 */
+}
+
+/* Firefox */
+body {
+  scrollbar-width: none; /* 스크롤바 너비 설정 */
+  -ms-overflow-style: none; /* 스크롤바 스타일 없음으로 설정 */
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

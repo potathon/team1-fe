@@ -30,12 +30,14 @@
 .date {
   display: flex;
   gap: 20px;
+  align-items: center;
   font-size: 22px;
   font-weight: 600;
 }
 
 .folder {
   width: 24px;
+  height: 20px;
 }
 
 .mainBottom {
