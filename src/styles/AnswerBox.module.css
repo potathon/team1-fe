@@ -1,0 +1,49 @@
+/* BoxTitle */
+
+.titleContainer {
+  width: 935px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: auto;
+  margin-bottom: 17px;
+}
+
+.documentImg {
+  width: 20px;
+  height: 25px;
+  margin-right: 12px;
+}
+
+.title {
+  font-size: 25px;
+}
+
+/* Question */
+
+.question {
+  width: 935px;
+  text-align: left;
+  padding-left: 7px;
+  margin-bottom: 17px;
+}
+
+/* Answer */
+
+.answerBox {
+  width: 935px;
+  background-color: #d9d9d9;
+  border: solid 1px #d9d9d9;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.answer {
+  min-height: 120px;
+  font-size: 18px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
