@@ -4,18 +4,21 @@ import Home from './pages/Home'
 import Today from './pages/Today'
 import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { AnswerProvider } from './context/AnswerContext'
 
 function App() {
   return (
     <div className='App'>
-      <Router>
-        <Routes>
-          <Route path={'/'} element={<Home />} />
-          <Route path={'/answer/:id'} element={<Answer />} />
-          <Route path={'/dailyList'} element={<DailyList />} />
-          <Route path={'/today/:id'} element={<Today />} />
-        </Routes>
-      </Router>
+      <AnswerProvider>
+        <Router>
+          <Routes>
+            <Route path={'/'} element={<Home />} />
+            <Route path={'/answer/:id'} element={<Answer />} />
+            <Route path={'/dailyList'} element={<DailyList />} />
+            <Route path={'/today/:id'} element={<Today />} />
+          </Routes>
+        </Router>
+      </AnswerProvider>
     </div>
   )
 }
