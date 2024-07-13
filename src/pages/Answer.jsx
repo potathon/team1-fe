@@ -13,7 +13,7 @@ export default function Answer() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://goldenteam.site/daily/${id}`)
+        const response = await fetch(`https://goldenteam.site/api/daily/${id}`)
         if (response.ok) {
           const responseData = await response.json()
           setData(responseData ?? '')

@@ -4,7 +4,6 @@ import Answer from './Answer'
 import styles from '../../styles/AnswerPage.module.css'
 
 export default function MyAnswer({ num, question, recodeUrl, answer }) {
-  console.log(num)
   return (
     <div className={styles.myAnswer}>
       <BoxTitle num={num} />
