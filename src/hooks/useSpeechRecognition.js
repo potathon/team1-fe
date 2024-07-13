@@ -6,6 +6,7 @@ const useSpeechRecognition = () => {
     error: null,
   })
   const [recognition, setRecognition] = useState(null)
+  const [isListening, setIsListening] = useState(false)
 
   useEffect(() => {
     const initRecognition = () => {
@@ -20,6 +21,7 @@ const useSpeechRecognition = () => {
       const newRecognition = new SpeechRecognition()
       newRecognition.lang = 'ko-KR'
       newRecognition.interimResults = false
+      newRecognition.continuous = true
       newRecognition.maxAlternatives = 1
 
       newRecognition.addEventListener('result', handleResult)
@@ -46,34 +48,43 @@ const useSpeechRecognition = () => {
       setResult({ text: '', error: 'SpeechRecognition이 지원되지 않습니다.' })
       return
     }
-
-    recognition.start()
+    if (!isListening) {
+      recognition.start()
+      setIsListening(true)
+    }
   }
 
   const stopListening = () => {
-    if (recognition) {
-      recognition.stop()
+    if (recognition && isListening) {
+      setTimeout(() => {
+        recognition.stop()
+        setIsListening(false)
+      }, 2000)
     }
   }
 
   const handleResult = (event) => {
-    const text = event.results[0][0].transcript
-    setResult((prevResult) => ({
-      text: prevResult.text + text,
+    const transcript = Array.from(event.results)
+      .filter((result) => result.isFinal)
+      .map((result) => result[0].transcript)
+      .join('')
+
+    setResult(() => ({
+      text: transcript,
       error: null,
     }))
   }
 
   const handleError = (event) => {
-    setResult({
-      text: '',
+    setResult((prevResult) => ({
+      text: prevResult.text,
       error: `SpeechRecognition error: ${event.error}`,
-    })
+    }))
     stopListening()
   }
 
   const handleEnd = () => {
-    if (recognition && recognition.continuous) {
+    if (isListening) {
       recognition.start()
     }
   }

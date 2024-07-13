@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react' // 수정된 부분
+import React, { useState, useEffect, useContext } from 'react'
 import Layout from '../components/Layout'
 import styles from '../styles/Today.module.css'
 import folder from '../assets/images/folder.png'
@@ -8,11 +8,11 @@ import TodayQuestionList from '../components/TodayQuestionList'
 import TodayAnswer from '../components/TodayAnswer'
 import { useParams } from 'react-router-dom'
 import { formatDate } from '../utils/transformDate'
-import { AnswerContext } from '../context/AnswerContext' // 수정된 부분
+import { AnswerContext } from '../context/AnswerContext'
 
 export default function Today() {
   const { answers, isEnd, setIsEnd, setAnswers, recordings, setRecordings } =
-    useContext(AnswerContext) // 수정된 부분
+    useContext(AnswerContext)
   const [data, setData] = useState([])
   const { id } = useParams()
 
@@ -38,6 +38,15 @@ export default function Today() {
       formData.append(`answer${index + 1}`, answer)
       if (recordings[index]) {
         formData.append(`recording${index + 1}`, recordings[index])
+      }
+    })
+
+    // 브라우저에서 녹음 파일 재생
+    recordings.forEach((recording, index) => {
+      if (recording) {
+        const audioUrl = URL.createObjectURL(recording)
+        const audio = new Audio(audioUrl)
+        audio.play()
       }
     })
 
