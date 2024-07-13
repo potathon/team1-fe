@@ -1,7 +1,7 @@
 /* BoxTitle */
 
 .titleContainer {
-  width: 935;
+  width: 935px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -22,7 +22,7 @@
 /* Question */
 
 .question {
-  width: 935;
+  width: 935px;
   text-align: left;
   padding-left: 7px;
   margin-bottom: 17px;

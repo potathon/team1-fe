@@ -28,7 +28,8 @@
 
 .boxContainer {
   width: 1080px;
-  height: 902px;
+  height: auto;
+  max-height: 902px;
   border: solid 1px #d9d9d9;
   border-radius: 30px 30px 0px 0px;
   display: flex;
