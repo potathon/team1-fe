@@ -5,14 +5,16 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   return (
     <Layout>
-      <div className={styles.mainImg}>
-        <img
-          src={potatoRoadImg}
-          alt='potatoRoad'
-          className={styles.potatoRoadImg}
-        />
+      <div className={styles.container}>
+        <div className={styles.mainImg}>
+          <img
+            src={potatoRoadImg}
+            alt='potatoRoad'
+            className={styles.potatoRoadImg}
+          />
+        </div>
+        <button className={styles.startBnt}>튀김기 입장</button>
       </div>
-      <button>튀김기 입장</button>
     </Layout>
   )
 }
