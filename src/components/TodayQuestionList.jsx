@@ -17,6 +17,7 @@ export default function TodayQuestionList({ data }) {
           setAnswer={(text) => setAnswers(index, text)}
           setRecording={(file) => setRecordings(index, file)}
           question={item.question}
+          questionId={item.questionId} // Ensure questionId is passed here
           questionNumber={questionNum}
           number={index + 1}
           isEnd={isEnd}
