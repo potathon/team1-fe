@@ -1,18 +1,23 @@
+import React, { useState, useContext } from 'react'
 import styles from '../styles/TodayAnswer.module.css'
-import { useState } from 'react'
 import documentIcon from '../assets/images/document.png'
 import editIcon from '../assets/images/edit.png'
 import check from '../assets/images/check.png'
+import { AnswerContext } from '../context/AnswerContext'
 
-export default function TodayAnswer({ answer1, answer2, answer3 }) {
+export default function TodayAnswer({ handleSubmit }) {
+  const { answers } = useContext(AnswerContext)
+
   return (
     <>
       <div className={styles.main}>
-        <Answer answer={answer1} number={1} />
-        <Answer answer={answer2} number={2} />
-        <Answer answer={answer3} number={3} />
+        {answers.map((answer, index) => (
+          <Answer answer={answer} number={index + 1} key={index} />
+        ))}
       </div>
-      <div className={styles.button}>제출하기</div>
+      <div className={styles.button} onClick={handleSubmit}>
+        제출하기
+      </div>
     </>
   )
 }
@@ -50,7 +55,7 @@ function Answer({ answer, number }) {
           maxLength={300}
           onChange={(e) => handleChangeFinal(e.target.value)}
           value={final}
-          readOnly={!edit} // edit 상태에 따라 readOnly 속성을 동적으로 설정
+          readOnly={!edit}
         ></textarea>
       </div>
     </div>

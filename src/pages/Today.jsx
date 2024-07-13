@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react' // 수정된 부분
 import Layout from '../components/Layout'
 import styles from '../styles/Today.module.css'
 import folder from '../assets/images/folder.png'
@@ -8,12 +8,12 @@ import TodayQuestionList from '../components/TodayQuestionList'
 import TodayAnswer from '../components/TodayAnswer'
 import { useParams } from 'react-router-dom'
 import { formatDate } from '../utils/transformDate'
+import { AnswerContext } from '../context/AnswerContext' // 수정된 부분
 
 export default function Today() {
-  const [isEnd, setIsEnd] = useState(false)
-  const [answers, setAnswers] = useState(['', '', ''])
+  const { answers, isEnd, setIsEnd, setAnswers, recordings, setRecordings } =
+    useContext(AnswerContext) // 수정된 부분
   const [data, setData] = useState([])
-
   const { id } = useParams()
 
   useEffect(() => {
@@ -32,6 +32,18 @@ export default function Today() {
     fetchData()
   }, [id])
 
+  const handleSubmit = async () => {
+    const formData = new FormData()
+    answers.forEach((answer, index) => {
+      formData.append(`answer${index + 1}`, answer)
+      if (recordings[index]) {
+        formData.append(`recording${index + 1}`, recordings[index])
+      }
+    })
+
+    // Submission logic here
+  }
+
   return (
     <Layout>
       <div className={styles.main}>
@@ -39,18 +51,11 @@ export default function Today() {
         <div className={styles.container}>
           <div className={styles.date}>
             <img alt='folder' src={folder} className={styles.folder} />
-            <div className={styles.date}>
-              {data.length > 0 ? formatDate(data[0].date) : ''}
-            </div>
+            <div className={styles.date}>{formatDate(data.date)}</div>
           </div>
           <div className={styles.mainBottom}>
             <div className={styles.left}>
-              <TodayQuestionList
-                data={data}
-                isEnd={isEnd}
-                setIsEnd={setIsEnd}
-                setAnswers={setAnswers}
-              />
+              <TodayQuestionList data={data} />
             </div>
             <div className={styles.right}>
               <img alt='void' src={voidImg} className={styles.void} />
@@ -63,6 +68,7 @@ export default function Today() {
             answer1={answers[0]}
             answer2={answers[1]}
             answer3={answers[2]}
+            handleSubmit={handleSubmit}
           />
         ) : (
           <Warning />
