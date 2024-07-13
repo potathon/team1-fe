@@ -53,6 +53,7 @@
   font-weight: 600;
   position: relative;
   top: 1px;
+  white-space: nowrap;
 }
 .volumeImg {
   width: 17px;

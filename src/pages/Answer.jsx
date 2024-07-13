@@ -42,16 +42,19 @@ export default function Answer() {
             key={data?.questions[0]?.question}
             question={data?.questions[0]?.question}
             answer={data?.questions[0]?.answer}
+            recodeUrl={data?.questions[0]?.recodeUrl}
           />
           <MyAnswer
             key={data?.questions[1]?.question}
             question={data?.questions[1]?.question}
             answer={data?.questions[1]?.answer}
+            recodeUrl={data?.questions[1]?.recodeUrl}
           />
           <MyAnswer
             key={data?.questions[2]?.question}
             question={data?.questions[2]?.question}
             answer={data?.questions[2]?.answer}
+            recodeUrl={data?.questions[2]?.recodeUrl}
           />
         </div>
       </div>
