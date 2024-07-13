@@ -1,6 +1,7 @@
 import Layout from '../components/Layout'
 import potatoRoadImg from '../assets/images/potatoRoad.png'
 import styles from '../styles/Home.module.css'
+import DailyList from './DailyList'
 
 export default function Home() {
   return (
@@ -13,7 +14,9 @@ export default function Home() {
             className={styles.potatoRoadImg}
           />
         </div>
-        <button className={styles.startBnt}>튀김기 입장</button>
+        <button className={styles.startBnt} onClick={<DailyList />}>
+          튀김기 입장
+        </button>
       </div>
     </Layout>
   )
