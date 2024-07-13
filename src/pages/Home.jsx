@@ -1,7 +1,7 @@
 import Layout from '../components/Layout'
 import potatoRoadImg from '../assets/images/potatoRoad.png'
 import potato from '../assets/images/potato.gif'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/HomePage.module.css'
 import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
     <Layout>
       <div className={styles.container}>
         <div className={styles.mainImg}>
-          <img src={potato} alt='potato' className={styles.potato}/>
+          <img src={potato} alt='potato' className={styles.potato} />
           <img
             src={potatoRoadImg}
             alt='potatoRoad'

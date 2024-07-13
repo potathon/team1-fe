@@ -1,0 +1,45 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+  width: 1080px;
+  gap: 20px;
+}
+
+.title {
+  color: #000000;
+  font-size: 30px;
+  margin: 42px 0px 30px 10px;
+  text-align: left;
+}
+
+.date {
+  font-size: 18px;
+  position: relative;
+  top: 55px;
+}
+
+.boxContainer {
+  width: 1080px;
+  height: 902px;
+  border: solid 1px #d9d9d9;
+  border-radius: 30px 30px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  overflow-y: auto;
+}
+
+/* MyAnswer */
+
+.myAnswer {
+  margin-bottom: 67px;
+}

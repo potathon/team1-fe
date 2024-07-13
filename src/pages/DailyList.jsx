@@ -1,6 +1,5 @@
 import Layout from '../components/Layout'
-import styles from '../styles/DailyList.module.css'
-import folderImg from '../assets/images/folder.png'
+import styles from '../styles/DailyListPage.module.css'
 import DailyBox from '../components/DailyBox'
 
 export default function DailyList() {
