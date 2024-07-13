@@ -5,6 +5,7 @@ import styles from '../styles/Today.module.css'
 import Lottie from 'lottie-react'
 import playing from '../assets/lotties/playing.json'
 import useSpeechRecognition from '../hooks/useSpeechRecognition'
+import useAudioRecorder from '../hooks/useAudioRecorder'
 import { AnswerContext } from '../context/AnswerContext'
 
 export default function TodayQuestion({
@@ -16,13 +17,18 @@ export default function TodayQuestion({
   const { setAnswers, setRecordings, isEnd, setIsEnd } =
     useContext(AnswerContext)
   const [enable, setEnable] = useState(false)
-  const [recording, setRecordingState] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [timer, setTimer] = useState(0)
   const [hasListened, setHasListened] = useState(false)
   const [hasAnswered, setHasAnswered] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [result, startListening, stopListening] = useSpeechRecognition()
+  const {
+    recording,
+    audioBlob,
+    startRecording: startAudioRecording,
+    stopRecording: stopAudioRecording,
+  } = useAudioRecorder()
   const intervalRef = useRef(null)
 
   const message = question
@@ -56,7 +62,7 @@ export default function TodayQuestion({
   useEffect(() => {
     if (result.text) {
       setTimeout(() => {
-        setAnswers(number - 1, result.text) // 수정된 부분
+        setAnswers(number - 1, result.text)
       }, 0)
       setHasAnswered(true)
       console.log('Converted Text:', result.text)
@@ -66,6 +72,21 @@ export default function TodayQuestion({
       console.error(result.error)
     }
   }, [result.text])
+
+  useEffect(() => {
+    if (audioBlob) {
+      setRecordings(number - 1, audioBlob)
+      if (number < 3) {
+        setTimeout(() => {
+          setQuestionNumber(number + 1)
+        }, 0)
+      } else {
+        setTimeout(() => {
+          setIsEnd(true)
+        }, 0)
+      }
+    }
+  }, [audioBlob])
 
   const playQuestion = () => {
     if (hasListened) return
@@ -85,27 +106,14 @@ export default function TodayQuestion({
     if (hasAnswered) return
     setErrorMessage('')
     setTimer(0)
-    setRecordingState(true)
+    startAudioRecording()
     startListening()
   }
 
   const stopRecording = () => {
     if (recording) {
       stopListening()
-      setRecordingState(false)
-      const audioBlob = new Blob([result.audio], { type: 'audio/wav' })
-      setTimeout(() => {
-        setRecordings(number - 1, audioBlob) // 수정된 부분
-      }, 0)
-      if (number < 3) {
-        setTimeout(() => {
-          setQuestionNumber(number + 1)
-        }, 0)
-      } else {
-        setTimeout(() => {
-          setIsEnd(true)
-        }, 0)
-      }
+      stopAudioRecording()
     }
   }
 

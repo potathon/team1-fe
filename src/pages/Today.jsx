@@ -39,9 +39,10 @@ export default function Today() {
       if (recordings[index]) {
         formData.append(`recording${index + 1}`, recordings[index])
       }
+      console.log(recordings)
     })
 
-    // 브라우저에서 녹음 파일 재생
+    // 녹음 파일 재생 로직
     recordings.forEach((recording, index) => {
       if (recording) {
         const audioUrl = URL.createObjectURL(recording)
@@ -51,6 +52,16 @@ export default function Today() {
     })
 
     // Submission logic here
+    // 예: 서버에 formData 전송
+    // const response = await fetch('YOUR_API_ENDPOINT', {
+    //   method: 'POST',
+    //   body: formData,
+    // })
+    // if (response.ok) {
+    //   console.log('Submission successful')
+    // } else {
+    //   console.log('Submission failed')
+    // }
   }
 
   return (
