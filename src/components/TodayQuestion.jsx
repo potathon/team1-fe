@@ -10,6 +10,7 @@ export default function TodayQuestion({
   setQuestionNumber,
   questionNumber,
   setAnswer,
+  question,
   number,
   isEnd,
   setIsEnd,
@@ -24,7 +25,7 @@ export default function TodayQuestion({
   const [result, startListening, stopListening] = useSpeechRecognition()
   const intervalRef = useRef(null)
 
-  const message = '자료구조에 대해서 설명하시오'
+  const message = question
 
   useEffect(() => {
     if (number === questionNumber) {
