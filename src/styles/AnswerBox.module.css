@@ -20,6 +20,13 @@
 
 /* Question */
 
+.questionContainer {
+  display: flex;
+  justify-content: space-between;
+  justify-content: center;
+  gap: 15px;
+}
+
 .question {
   width: 935px;
   text-align: left;
@@ -27,10 +34,35 @@
   margin-bottom: 17px;
 }
 
+.listenBnt {
+  width: 93px;
+  height: 23px;
+  background-color: #9a7411;
+  border: solid 1px #9a7411;
+  opacity: 0.5;
+  border-radius: 10px;
+  color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  align-items: center;
+}
+
+.bntText {
+  font-size: 13px;
+  font-weight: 600;
+  position: relative;
+  top: 1px;
+}
+.volumeImg {
+  width: 17px;
+  height: 17px;
+}
+
 /* Answer */
 
 .answerBox {
-  width: 935px;
+  width: 100%;
   background-color: #d9d9d9;
   border: solid 1px #d9d9d9;
   border-radius: 10px;
