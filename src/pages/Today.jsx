@@ -24,7 +24,7 @@ export default function Today() {
         <div className={styles.container}>
           <div className={styles.date}>
             <img alt='folder' src={folder} className={styles.folder} />
-            <div className={styles.date}>7월 13일</div>
+            <div className={styles.date}>7월 13일 (토)</div>
           </div>
           <div className={styles.mainBottom}>
             <div className={styles.left}>
@@ -42,11 +42,6 @@ export default function Today() {
           </div>
         </div>
         <hr className={styles.line} />
-        {/* {isEnd ? (
-          <TodayAnswer answer1={answer1} answer2={answer2} answer3={answer3} />
-        ) : (
-          <Warning />
-        )} */}
         {isEnd ? (
           <TodayAnswer
             answer1={answer1[0]?.text}

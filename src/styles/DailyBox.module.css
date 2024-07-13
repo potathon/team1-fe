@@ -1,12 +1,17 @@
 .box {
-  width: 1011px;
-  height: 129px;
-  border-bottom: solid 1px #d9d9d9;
+  width: 100%;
+  height: fit-content;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: top;
-  margin: 0px 35px 35px;
+}
+
+.line {
+  margin: 42px 0;
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background-color: #d8d8d8;
 }
 
 .dateBox {
@@ -28,17 +33,53 @@
 
 .date {
   font-size: 20px;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 
 .answered {
   font-size: 15px;
+  font-weight: 500;
 }
 
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   width: 79px;
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
   height: 45px;
   border: solid 1px #f5e3b3;
   background-color: #f5e3b3;
   border-radius: 10px;
+}
+
+.line:last-child {
+  display: none;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.button:hover {
+  animation: shake 0.5s; /* Apply the shake animation */
+  animation-iteration-count: infinite; /* Repeat the animation infinitely */
 }
