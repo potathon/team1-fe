@@ -1,32 +1,21 @@
+import React, { useState, useContext } from 'react'
 import TodayQuestion from '../components/TodayQuestion'
 import styles from '../styles/Today.module.css'
-import React, { useState, useEffect } from 'react'
+import { AnswerContext } from '../context/AnswerContext'
 
-export default function TodayQuestionList({
-  data,
-  isEnd,
-  setIsEnd,
-  setAnswers,
-}) {
+export default function TodayQuestionList({ data }) {
   const [questionNum, setQuestionNumber] = useState(1)
-
-  if (data.length === 0) return null
-
-  const handleSetAnswer = (index, text) => {
-    setAnswers((prevAnswers) => {
-      const newAnswers = [...prevAnswers]
-      newAnswers[index] = text
-      return newAnswers
-    })
-  }
+  const { setAnswers, setRecordings, isEnd, setIsEnd } =
+    useContext(AnswerContext)
 
   return (
     <div className={styles.questions}>
-      {data.map((item, index) => (
+      {data?.questions?.map((item, index) => (
         <TodayQuestion
           key={index}
           setQuestionNumber={setQuestionNumber}
-          setAnswer={(text) => handleSetAnswer(index, text)}
+          setAnswer={(text) => setAnswers(index, text)}
+          setRecording={(file) => setRecordings(index, file)}
           question={item.question}
           questionNumber={questionNum}
           number={index + 1}

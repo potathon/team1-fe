@@ -80,6 +80,7 @@
 }
 
 .button:hover {
+  cursor: pointer;
   animation: shake 0.5s; /* Apply the shake animation */
   animation-iteration-count: infinite; /* Repeat the animation infinitely */
 }
