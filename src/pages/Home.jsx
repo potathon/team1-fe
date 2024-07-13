@@ -7,17 +7,25 @@ import { useState } from 'react'
 
 export default function Home() {
   const [token, setToken] = useState('')
+  const [error, setError] = useState(false)
   const navigator = useNavigate()
   const handleButtonClick = async () => {
+    const data = JSON.stringify({ token: token })
     try {
       const response = await fetch('https://goldenteam.site/user/login', {
         method: 'POST',
+        body: data,
       })
 
       if (response.ok) {
         navigator('/dailyList')
+        setError(false)
+      } else {
+        setError(true)
       }
-    } catch {}
+    } catch (error) {
+      setError(true)
+    }
   }
 
   const changeToken = (input) => {
@@ -47,6 +55,7 @@ export default function Home() {
         <button className={styles.startBnt} onClick={handleButtonClick}>
           튀김기 입장
         </button>
+        {error && <div className={styles.error}>감자깎기 실패 ㅜㅜ</div>}
       </div>
     </Layout>
   )

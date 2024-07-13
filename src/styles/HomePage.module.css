@@ -82,3 +82,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.error {
+  margin-top: 20px;
+  font-weight: 600;
+  color: red;
+}
