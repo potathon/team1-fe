@@ -19,7 +19,9 @@ export default function Today() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://goldenteam.site/daily/test/${id}`)
+        const response = await fetch(
+          `https://goldenteam.site/api/daily/test/${id}`
+        )
         if (response.ok) {
           const responseData = await response.json()
           setData(responseData)
@@ -33,35 +35,41 @@ export default function Today() {
   }, [id])
 
   const handleSubmit = async () => {
+    const userId = localStorage.getItem('userId')
     const formData = new FormData()
-    answers.forEach((answer, index) => {
-      formData.append(`answer${index + 1}`, answer)
-      if (recordings[index]) {
-        formData.append(`recording${index + 1}`, recordings[index])
-      }
-      console.log(recordings)
+
+    console.log(answers)
+    const replies = answers.map((answer, index) => ({
+      questionId: answer.questionId, // Ensure questionId is used here
+      answer: answer.text,
+    }))
+
+    const dailyCompleteDto = JSON.stringify({
+      userId: userId,
+      replies: replies,
     })
 
-    // 녹음 파일 재생 로직
+    formData.append('dailyCompleteDto', dailyCompleteDto)
+
     recordings.forEach((recording, index) => {
       if (recording) {
-        const audioUrl = URL.createObjectURL(recording)
-        const audio = new Audio(audioUrl)
-        audio.play()
+        formData.append('records', recording)
       }
     })
 
     // Submission logic here
-    // 예: 서버에 formData 전송
-    // const response = await fetch('YOUR_API_ENDPOINT', {
-    //   method: 'POST',
-    //   body: formData,
-    // })
-    // if (response.ok) {
-    //   console.log('Submission successful')
-    // } else {
-    //   console.log('Submission failed')
-    // }
+    const response = await fetch(
+      `https://goldenteam.site/api/daily/test/${id}`,
+      {
+        method: 'POST',
+        body: formData,
+      }
+    )
+    if (response.ok) {
+      console.log('Submission successful')
+    } else {
+      console.log('Submission failed')
+    }
   }
 
   return (
@@ -84,12 +92,7 @@ export default function Today() {
         </div>
         <hr className={styles.line} />
         {isEnd ? (
-          <TodayAnswer
-            answer1={answers[0]}
-            answer2={answers[1]}
-            answer3={answers[2]}
-            handleSubmit={handleSubmit}
-          />
+          <TodayAnswer answers={answers} handleSubmit={handleSubmit} />
         ) : (
           <Warning />
         )}

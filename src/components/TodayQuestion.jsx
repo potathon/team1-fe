@@ -12,6 +12,7 @@ export default function TodayQuestion({
   setQuestionNumber,
   questionNumber,
   question,
+  questionId, // Ensure questionId is received here
   number,
 }) {
   const { setAnswers, setRecordings, isEnd, setIsEnd } =
@@ -62,7 +63,7 @@ export default function TodayQuestion({
   useEffect(() => {
     if (result.text) {
       setTimeout(() => {
-        setAnswers(number - 1, result.text)
+        setAnswers(number - 1, { questionId, text: result.text }) // Ensure questionId is set here
       }, 0)
       setHasAnswered(true)
       console.log('Converted Text:', result.text)
