@@ -20,7 +20,7 @@ export default function DailyBox({ data, isDone = true }) {
             START
           </Link>
         ) : (
-          <Link to={`/answer/${data.id}`} className={styles.button}>
+          <Link to={`/daily/${data.id}`} className={styles.button}>
             REVIEW
           </Link>
         )}
