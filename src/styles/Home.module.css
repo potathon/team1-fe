@@ -7,6 +7,24 @@
   justify-content: center;
 }
 
+.mainImg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: -170px;
+}
+
+.potato {
+  width: 327px;
+  height: 274px;
+  padding-top: 250px;
+  padding-left: 100px;
+  position: relative;
+  right: -170px;
+}
+
 .potatoRoadImg {
   width: 523px;
   height: 288px;
