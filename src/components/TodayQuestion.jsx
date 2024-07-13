@@ -1,22 +1,22 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import play from '../assets/images/play.png'
 import microphone from '../assets/images/microphone.png'
 import styles from '../styles/Today.module.css'
 import Lottie from 'lottie-react'
 import playing from '../assets/lotties/playing.json'
 import useSpeechRecognition from '../hooks/useSpeechRecognition'
+import { AnswerContext } from '../context/AnswerContext'
 
 export default function TodayQuestion({
   setQuestionNumber,
   questionNumber,
-  setAnswer,
   question,
   number,
-  isEnd,
-  setIsEnd,
 }) {
+  const { setAnswers, setRecordings, isEnd, setIsEnd } =
+    useContext(AnswerContext)
   const [enable, setEnable] = useState(false)
-  const [recording, setRecording] = useState(false)
+  const [recording, setRecordingState] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [timer, setTimer] = useState(0)
   const [hasListened, setHasListened] = useState(false)
@@ -55,15 +55,17 @@ export default function TodayQuestion({
 
   useEffect(() => {
     if (result.text) {
-      setAnswer((prev) => [...prev, { number, text: result.text }])
+      setTimeout(() => {
+        setAnswers(number - 1, result.text) // 수정된 부분
+      }, 0)
       setHasAnswered(true)
-      console.log(result.text)
+      console.log('Converted Text:', result.text)
     }
     if (result.error) {
       setErrorMessage('Speech recognition error: ' + result.error)
       console.error(result.error)
     }
-  }, [result])
+  }, [result.text])
 
   const playQuestion = () => {
     if (hasListened) return
@@ -83,21 +85,26 @@ export default function TodayQuestion({
     if (hasAnswered) return
     setErrorMessage('')
     setTimer(0)
-    setRecording(true)
+    setRecordingState(true)
     startListening()
   }
 
   const stopRecording = () => {
     if (recording) {
       stopListening()
-      setRecording(false)
-      // 상태 업데이트를 렌더링 단계 이후에 수행
+      setRecordingState(false)
+      const audioBlob = new Blob([result.audio], { type: 'audio/wav' })
+      setTimeout(() => {
+        setRecordings(number - 1, audioBlob) // 수정된 부분
+      }, 0)
       if (number < 3) {
         setTimeout(() => {
           setQuestionNumber(number + 1)
         }, 0)
       } else {
-        setIsEnd(true)
+        setTimeout(() => {
+          setIsEnd(true)
+        }, 0)
       }
     }
   }
@@ -105,42 +112,53 @@ export default function TodayQuestion({
   return (
     <>
       <div className={styles.question}>
-        <div className={styles.questionNumber}>질문 {number}</div>
-        <div className={styles.questionButtons}>
-          <div
-            className={`${styles.listenButton} ${
-              enable && !isEnd ? styles.enabled : styles.disabled
-            }`}
-            onClick={enable && !hasListened ? playQuestion : null}
-          >
-            {isPlaying && !recording ? (
-              <div className={styles.playing}>
-                <Lottie animationData={playing} />
-              </div>
-            ) : (
-              <>
-                <img src={play} className={styles.play} alt='Play' /> 문제
-              </>
-            )}
-          </div>
-          <div
-            className={`${styles.answerButton} ${
-              recording ? styles.enabled : ''
-            } ${enable && hasListened && !isEnd ? '' : styles.disabled}`}
-            onClick={recording ? stopRecording : null}
-          >
-            <img
-              src={microphone}
-              className={styles.microphone}
-              alt='Microphone'
-            />{' '}
-            완료
+        <div className={styles.questionContainer}>
+          <div className={styles.questionNumber}>질문 {number}</div>
+          <div className={styles.questionButtons}>
+            <div
+              className={`${styles.listenButton} ${
+                enable && !isEnd ? styles.enabled : styles.disabled
+              }`}
+              onClick={enable && !hasListened ? playQuestion : null}
+            >
+              {isPlaying && !recording ? (
+                <div className={styles.playing}>
+                  <Lottie animationData={playing} />
+                </div>
+              ) : (
+                <>
+                  <img src={play} className={styles.play} alt='Play' /> 문제
+                </>
+              )}
+            </div>
+            <div
+              className={`${styles.answerButton} ${
+                recording ? styles.enabled : ''
+              } ${enable && hasListened && !isEnd ? '' : styles.disabled}`}
+              onClick={recording ? stopRecording : null}
+            >
+              <img
+                src={microphone}
+                className={styles.microphone}
+                alt='Microphone'
+              />{' '}
+              완료
+            </div>
           </div>
         </div>
+        {recording && (
+          <div className={styles.timerContainer}>
+            <div className={styles.timerBar}>
+              <div
+                className={styles.timerProgress}
+                style={{ width: `${(timer / 30) * 100}%` }}
+              ></div>
+            </div>
+            <div className={styles.timerText}>남은 시간: {30 - timer}초</div>
+          </div>
+        )}
       </div>
-      {recording && (
-        <div className={styles.timer}>남은 시간: {30 - timer}초</div>
-      )}
+
       {errorMessage && <div className={styles.error}>에러: {errorMessage}</div>}
     </>
   )
