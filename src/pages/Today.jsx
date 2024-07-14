@@ -6,7 +6,7 @@ import voidImg from '../assets/images/voidImg.png'
 import Warning from '../components/Warning'
 import TodayQuestionList from '../components/TodayQuestionList'
 import TodayAnswer from '../components/TodayAnswer'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { formatDate } from '../utils/transformDate'
 import { AnswerContext } from '../context/AnswerContext'
 
@@ -15,6 +15,7 @@ export default function Today() {
     useContext(AnswerContext)
   const [data, setData] = useState([])
   const { id } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,18 +59,20 @@ export default function Today() {
     })
 
     // Submission logic here
-    const response = await fetch(
-      `https://goldenteam.site/api/daily/test/${id}`,
-      {
-        method: 'POST',
-        body: formData,
-      }
-    )
-    if (response.ok) {
-      console.log('Submission successful')
-    } else {
-      console.log('Submission failed')
-    }
+    // const response = await fetch(
+    //   `https://goldenteam.site/api/daily/test/${id}`,
+    //   {
+    //     method: 'POST',
+    //     body: formData,
+    //   }
+    // )
+    // if (response.ok) {
+    //   console.log('Submission successful')
+    // } else {
+    //   console.log('Submission failed')
+    // }
+    alert('챌린지 출석 완료 🍟')
+    navigate('/dailyList')
   }
 
   return (
@@ -91,7 +94,7 @@ export default function Today() {
           </div>
         </div>
         <hr className={styles.line} />
-        {isEnd ? (
+        {!isEnd ? (
           <TodayAnswer answers={answers} handleSubmit={handleSubmit} />
         ) : (
           <Warning />
