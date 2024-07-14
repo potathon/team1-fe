@@ -3,6 +3,7 @@ import styles from '../styles/TodayAnswer.module.css'
 import documentIcon from '../assets/images/document.png'
 import editIcon from '../assets/images/edit.png'
 import check from '../assets/images/check.png'
+import { AnswerContext } from '../context/AnswerContext'
 
 export default function TodayAnswer({ handleSubmit, answers }) {
   return (
