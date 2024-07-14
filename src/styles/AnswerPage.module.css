@@ -1,0 +1,47 @@
+.main {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: first baseline;
+  margin-bottom: 70px;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 20px;
+}
+
+.title {
+  margin-top: 42px;
+  margin-bottom: 0;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.date {
+  font-size: 18px;
+  position: relative;
+  top: 55px;
+}
+
+.container {
+  margin-top: 30px;
+  border-radius: 30px;
+  width: 100%;
+  height: fit-content;
+  border: 1px solid #d8d8d8;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+/* MyAnswer */
+
+.myAnswer {
+  margin-bottom: 67px;
+}

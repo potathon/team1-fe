@@ -1,0 +1,169 @@
+.main {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: first baseline;
+}
+
+.title {
+  margin-top: 42px;
+  margin-bottom: 0;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.container {
+  margin-top: 30px;
+  border-radius: 30px;
+  width: 100%;
+  height: 600px;
+  height: fit-content;
+  border: 1px solid #d8d8d8;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.date {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.folder {
+  width: 24px;
+  height: 20px;
+}
+
+.mainBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: first baseline;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.void {
+  max-width: 200px;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.listenButton,
+.answerButton {
+  background-color: #f5e3b3;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  display: flex;
+  width: 76px;
+  gap: 5px;
+  height: 42px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.play,
+.microphone {
+  width: 20px;
+}
+
+.line {
+  margin: 42px 0;
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background-color: #d8d8d8;
+}
+
+.left {
+  flex: 1;
+  width: 100%;
+}
+
+.questions {
+  width: 100%;
+  margin-top: 45px;
+  display: flex;
+  align-items: first baseline;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.question {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 30px;
+}
+
+.questionContainer {
+  max-width: 320px;
+  width: 100%;
+  display: flex;
+  gap: 100px;
+}
+
+.questionNumber {
+  white-space: nowrap;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.questionButtons {
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  gap: 18px;
+}
+
+@media (min-width: 600px) {
+  .mainBottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+  }
+}
+
+.playing {
+  display: flex;
+  padding-top: 4px;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.timerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.timerBar {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.timerProgress {
+  height: 10px;
+  background-color: #9a7411;
+}
+
+.timerText {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #333;
+}

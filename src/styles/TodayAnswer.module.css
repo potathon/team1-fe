@@ -1,0 +1,123 @@
+.main {
+  padding: 50px;
+  border-radius: 30px;
+  width: 100%;
+  height: fit-content;
+  border: 1px solid #d8d8d8;
+  padding: 50px;
+  box-sizing: border-box;
+  gap: 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.answer {
+  width: 100%;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  display: flex;
+  gap: 10px;
+}
+
+.document {
+  width: 20px;
+  height: 25px;
+}
+
+.content {
+  width: 100%;
+}
+
+.topContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contentInput {
+  resize: none;
+  background-color: #ececec;
+  width: 100%;
+  height: 170px;
+  border-radius: 20px;
+  padding: 40px;
+  margin-top: 20px;
+  box-sizing: border-box;
+  border: 0;
+}
+
+.contentInput:focus {
+  outline: none;
+  border-color: transparent;
+}
+
+.iconContainer {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d8d8d8;
+  border-radius: 10px;
+}
+
+.icon {
+  width: 20px;
+  position: relative;
+  top: -1px;
+  left: 1px;
+}
+
+.checkIcon {
+  width: 20px;
+  position: relative;
+}
+
+.edit {
+  background-color: #f5e3b3;
+}
+
+.edit:focus {
+  border: 1px solid #9a7411;
+}
+
+.button {
+  width: 100%;
+  max-width: 300px;
+  background-color: #f5e3b3;
+  border-radius: 20px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 60px auto 80px;
+  box-shadow: 5px 5px 5px rgb(211, 211, 211, 40%);
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.button:hover {
+  cursor: pointer;
+  animation: shake 0.5s; /* Apply the shake animation */
+  animation-iteration-count: infinite; /* Repeat the animation infinitely */
+}

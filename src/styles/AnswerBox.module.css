@@ -1,0 +1,96 @@
+/* BoxTitle */
+
+.titleContainer {
+  font-size: 22px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.documentImg {
+  width: 20px;
+  height: 25px;
+}
+
+.title {
+  font-size: 25px;
+}
+
+/* Question */
+
+.questionContainer {
+  display: flex;
+  justify-content: space-between;
+  justify-content: center;
+  gap: 15px;
+}
+
+.question {
+  width: 935px;
+  text-align: left;
+  padding-left: 7px;
+  margin-bottom: 17px;
+}
+
+.listenBnt {
+  width: 93px;
+  height: 23px;
+  background-color: #9a7411;
+  border: solid 1px #9a7411;
+  opacity: 0.5;
+  border-radius: 10px;
+  color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  align-items: center;
+}
+
+.bntText {
+  font-size: 13px;
+  font-weight: 600;
+  position: relative;
+  top: 1px;
+  white-space: nowrap;
+}
+.volumeImg {
+  width: 17px;
+  height: 17px;
+}
+
+/* Answer */
+
+.answerBox {
+  width: 100%;
+  background-color: #d9d9d9;
+  border: solid 1px #d9d9d9;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.feedbackBox {
+  width: 100%;
+  background-color: #9a7411;
+  border: solid 1px #9a7411;
+  opacity: 0.5;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+}
+
+.answer {
+  min-height: 120px;
+  font-size: 18px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left; /* 텍스트를 왼쪽 정렬 */
+  flex-wrap: wrap; /* 텍스트가 줄바꿈되도록 설정 */
+}
