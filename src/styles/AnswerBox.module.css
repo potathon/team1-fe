@@ -81,6 +81,7 @@
   color: white;
   font-weight: 600;
   margin-bottom: 10px;
+  white-space: pre-wrap;
 }
 
 .answer {

@@ -13,8 +13,6 @@ export default function MyAnswer({
   answer,
   feedback,
 }) {
-  console.log(feedback)
-
   const [cuttedFeedback, setCuttedFeedback] = useState('')
 
   useEffect(() => {
@@ -28,6 +26,8 @@ export default function MyAnswer({
     }
     processCutting()
   }, [feedback])
+
+  console.log(cuttedFeedback)
 
   return (
     <div className={styles.myAnswer}>
