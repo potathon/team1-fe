@@ -3,11 +3,8 @@ import styles from '../styles/TodayAnswer.module.css'
 import documentIcon from '../assets/images/document.png'
 import editIcon from '../assets/images/edit.png'
 import check from '../assets/images/check.png'
-import { AnswerContext } from '../context/AnswerContext'
 
-export default function TodayAnswer({ handleSubmit }) {
-  const { answers } = useContext(AnswerContext)
-
+export default function TodayAnswer({ handleSubmit, answers }) {
   return (
     <>
       <div className={styles.main}>
@@ -23,7 +20,7 @@ export default function TodayAnswer({ handleSubmit }) {
 }
 
 function Answer({ answer, number }) {
-  const [final, setFinal] = useState(answer)
+  const [final, setFinal] = useState(answer.text)
   const [edit, setEdit] = useState(false)
 
   const handleChangeFinal = (input) => {

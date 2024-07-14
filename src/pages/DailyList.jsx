@@ -8,7 +8,7 @@ export default function DailyList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://goldenteam.site/daily')
+        const response = await fetch('https://goldenteam.site/api/daily')
 
         if (response.ok) {
           const responseData = await response.json()
