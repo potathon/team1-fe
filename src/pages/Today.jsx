@@ -94,7 +94,7 @@ export default function Today() {
           </div>
         </div>
         <hr className={styles.line} />
-        {!isEnd ? (
+        {isEnd ? (
           <TodayAnswer answers={answers} handleSubmit={handleSubmit} />
         ) : (
           <Warning />
