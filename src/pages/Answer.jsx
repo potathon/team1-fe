@@ -44,6 +44,7 @@ export default function Answer() {
             question={data?.questions[0]?.question}
             answer={data?.questions[0]?.answer}
             recodeUrl={data?.questions[0]?.recodeUrl}
+            feedback={data?.questions[0]?.feedback}
           />
           <MyAnswer
             key={2}
@@ -51,6 +52,7 @@ export default function Answer() {
             question={data?.questions[1]?.question}
             answer={data?.questions[1]?.answer}
             recodeUrl={data?.questions[1]?.recodeUrl}
+            feedback={data?.questions[1]?.feedback}
           />
           <MyAnswer
             key={3}
@@ -58,6 +60,7 @@ export default function Answer() {
             question={data?.questions[2]?.question}
             answer={data?.questions[2]?.answer}
             recodeUrl={data?.questions[2]?.recodeUrl}
+            feedback={data?.questions[2]?.feedback}
           />
         </div>
       </div>
